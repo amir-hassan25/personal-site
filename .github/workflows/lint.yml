@@ -2,7 +2,7 @@ name: Lint Python Code
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, feature/resume-download ]
   pull_request:
     branches: [ main ]
 
@@ -24,7 +24,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pylint  # or use requirements.txt if you have one
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    
+
     - name: Run pylint
       run: |
-        pylint your_package_or_script_name.py  # replace with your script or package
+        pylint app.py  # replace with your script or package
