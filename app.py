@@ -22,7 +22,6 @@ PROJECTS = {
     "🏆 MyToolBelt - Custom MS Excel add-in to combine Python & Excel": "https://pythonandvba.com/mytoolbelt/",
 }
 
-
 st.set_page_config(
     page_title=PAGE_TITLE, 
     page_icon=PAGE_ICON
