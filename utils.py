@@ -28,8 +28,15 @@ def load_image(path):
 def write_streamlit_section(section_name, content):
     """
     Utility function to write Streamlit section content.
+    Detects if content is raw text or a markdown file path.
     """
     st.write('\n')
-    st.subheader(f'{section_name}')
-    st.write(content)
+    st.subheader(section_name)
+
+    # If it's a Path object or string ending in .md that exists
+    if isinstance(content, (str, Path)) and str(content).endswith(".md") and Path(content).exists():
+        markdown_text = Path(content).read_text(encoding='utf-8')
+        st.markdown(markdown_text, unsafe_allow_html=True)
+    else:
+        st.write(content)
     
