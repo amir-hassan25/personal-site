@@ -25,18 +25,20 @@ def load_image(path):
 
 # --- Main content utility functions ---
 
-def write_streamlit_section(section_name, content):
+def write_streamlit_section(section_name, content, anchor_id=None):
     """
-    Utility function to write Streamlit section content.
-    Detects if content is raw text or a markdown file path.
+    Utility function to write Streamlit section content with scroll anchor.
     """
+    if anchor_id:
+        st.markdown(f'<a id="{anchor_id}"></a>', unsafe_allow_html=True)
+
     st.write('\n')
     st.subheader(section_name)
 
-    # If it's a Path object or string ending in .md that exists
+    # Detect if content is a .md file or raw text
+    from pathlib import Path
     if isinstance(content, (str, Path)) and str(content).endswith(".md") and Path(content).exists():
-        markdown_text = Path(content).read_text(encoding='utf-8')
-        st.markdown(markdown_text, unsafe_allow_html=True)
+        st.markdown(Path(content).read_text(encoding='utf-8'), unsafe_allow_html=True)
     else:
         st.write(content)
     
