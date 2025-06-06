@@ -1,15 +1,6 @@
-from pathlib import Path
-
 import streamlit as st
-from PIL import Image
+from utils import get_paths, load_pdf, load_css, load_image
 
-
-# --- Path Settings ---
-
-current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
-css_file = current_dir / "styles" / "main.css"
-resume_file = current_dir / "assets" / "amir_resume.pdf"
-profile_pic = current_dir / "assets" / "prof_pic.jpeg"
 
 # --- GENERAL SETTINGS ---
 PAGE_TITLE = "Digital Resume | Amir Hassan Shariatmadari"
@@ -31,19 +22,25 @@ PROJECTS = {
     "🏆 MyToolBelt - Custom MS Excel add-in to combine Python & Excel": "https://pythonandvba.com/mytoolbelt/",
 }
 
-
 st.set_page_config(
     page_title=PAGE_TITLE, 
     page_icon=PAGE_ICON
     )
 
 
-# --- LOAD CSS, PDF & PROFIL PIC ---
-with open(css_file) as f:
-    st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
-with open(resume_file, "rb") as pdf_file:
-    PDFbyte = pdf_file.read()
-profile_pic = Image.open(profile_pic)
+# --- LOAD CSS, RESUME PDF & PROFIL PIC ---
+paths = get_paths()
+
+# Load css and style streamlit markdwon 
+css = load_css(paths['css'])
+st.markdown("<style>{}</style>".format(css), unsafe_allow_html=True)
+
+# Load PDF file
+resume_pdf = load_pdf(paths['resume'])
+
+# Load profile picture 
+profile_pic = load_image(paths['profile_pic'])
+
 
 
 # --- HERO SECTION ---
@@ -56,8 +53,8 @@ with col2:
     st.write(DESCRIPTION)
     st.download_button(
         label=" 📄 Download Resume",
-        data=PDFbyte,
-        file_name=resume_file.name,
+        data=resume_pdf,
+        file_name=paths['resume'].name,
         mime="application/octet-stream",
     )
     st.write("📫", EMAIL)
