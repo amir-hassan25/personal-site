@@ -3,12 +3,30 @@
 
 * {font-family: 'Readex Pro';}
 
-
 a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    a {
+        color: black !important;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    a {
+        color: white !important;
+    }
+}
+
+/* a {
     text-decoration: none;
     color: black !important;
     font-weight: 500;
-}
+} */
 
 a:hover {
     color: #d33682 !important;
