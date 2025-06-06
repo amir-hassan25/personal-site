@@ -4,7 +4,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from PIL import Image
 from unittest.mock import patch, mock_open
-from utils import get_paths, load_pdf, load_css, load_image
+from utils import get_paths, load_pdf, load_css, load_image, write_streamlit_section
 
 
 def test_get_paths():
@@ -20,6 +20,8 @@ def test_get_paths():
     assert "resume" in paths
     assert "profile_pic" in paths
 
+
+# --- Test load functions ---
 
 def test_load_pdf():
     """
@@ -67,3 +69,22 @@ def test_load_image():
         img = load_image("some/path/image.jpg")
         assert img.size == (50, 50)
         mock_img_open.assert_called_once_with("some/path/image.jpg")
+
+
+# --- Test write content functions ---
+
+def test_write_streamlit_section():
+    """
+    Test that `write_streamlit_section()` writes a section with a subheader.
+
+    Mocks `st.write()` and `st.subheader()` to verify:
+    - The section name is correctly formatted.
+    - The content is written as markdown.
+    """
+    with patch("streamlit.write") as mock_write, patch("streamlit.subheader") as mock_subheader:
+        section_name = "Test Section"
+        content = "This is some test content."
+        write_streamlit_section(section_name, content)
+        
+        mock_subheader.assert_called_once_with(section_name)
+        mock_write.assert_called_with(content)

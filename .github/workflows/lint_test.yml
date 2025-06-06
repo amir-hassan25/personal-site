@@ -24,7 +24,7 @@ jobs:
 
     - name: Run pylint
       run: |
-        pylint app.py --fail-under=2.0
+        pylint **/*.py --ignore=venv,build --fail-under=5.0
 
     - name: Run pytest
       run: |

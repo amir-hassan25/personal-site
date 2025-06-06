@@ -1,32 +1,27 @@
+import json
 import streamlit as st
-from utils import get_paths, load_pdf, load_css, load_image
+from utils import get_paths, load_pdf, load_css, load_image, write_streamlit_section
+
+# Load settings from a JSON file
+with open("assets/content.json", "r") as f:    
+    content = json.load(f)
 
 
 # --- GENERAL SETTINGS ---
-PAGE_TITLE = "Digital Resume | Amir Hassan Shariatmadari"
-PAGE_ICON = ":wave:"
-NAME = "Amir Hassan Shariatmadari"
-DESCRIPTION = """Machine Learning and Software Engineer at IBSS Corp."""
 
-EMAIL = "amirhassanshariatmadari@gmail.com"
+general = content.get("GENERAL", {})
+PAGE_TITLE = general.get("PAGE_TITLE", "")
+PAGE_ICON = general.get("PAGE_ICON", "")
+NAME = general.get("NAME", "")
+DESCRIPTION = general.get("DESCRIPTION", "")
+EMAIL = general.get("EMAIL", "")
 
-SOCIAL_MEDIA = {
-    "LinkedIn": "https://linkedin.com",
-    "GitHub": "https://github.com"
-    }
 
-PROJECTS = {
-    "🏆 Sales Dashboard - Comparing sales across three stores": "https://youtu.be/Sb0A9i6d320",
-    "🏆 Income and Expense Tracker - Web app with NoSQL database": "https://youtu.be/3egaMfE9388",
-    "🏆 Desktop Application - Excel2CSV converter with user settings & menubar": "https://youtu.be/LzCfNanQ_9c",
-    "🏆 MyToolBelt - Custom MS Excel add-in to combine Python & Excel": "https://pythonandvba.com/mytoolbelt/",
-}
 
 st.set_page_config(
     page_title=PAGE_TITLE, 
     page_icon=PAGE_ICON
     )
-
 
 # --- LOAD CSS, RESUME PDF & PROFIL PIC ---
 paths = get_paths()
@@ -61,7 +56,47 @@ with col2:
 
 
 # --- SOCIAL LINKS ---
+SOCIAL_MEDIA = content.get("SOCIAL_MEDIA", {})
 st.write('\n')
 cols = st.columns(len(SOCIAL_MEDIA))
 for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
     cols[index].write(f"[{platform}]({link})")
+
+
+main_content = content.get("MAIN_CONTENT", {})
+
+# --- ABOUT ME SECTION ---
+about_me = main_content.get("ABOUT_ME", "")
+write_streamlit_section(
+    "👋 About Me",
+    about_me
+)
+
+# --- EDUCATION SECTION ---
+
+education = main_content.get("EDUCATION", "")
+write_streamlit_section(
+    "🎓 Education",
+    education
+)
+
+# --- EXPERIENCE SECTION --- 
+experience = main_content.get("EXPERIENCE", "")
+write_streamlit_section(
+    "💼 Experience",
+    experience
+)
+
+# --- PUBLICATIONS SECTION ---
+publications = main_content.get("PUBLICATIONS", "")
+write_streamlit_section(
+    "📚 Publications",
+    publications
+)
+
+# --- SKILLS SECTION ---
+skills = main_content.get("SKILLS", "")
+write_streamlit_section(
+    "🛠️ Skills",
+    skills
+)

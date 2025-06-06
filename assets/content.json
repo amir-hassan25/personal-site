@@ -1,0 +1,24 @@
+{
+    "GENERAL": {
+        "PAGE_TITLE": "Digital Resume | Amir Hassan Shariatmadari",
+        "PAGE_ICON": ":wave:",
+        "NAME": "Amir Hassan Shariatmadari",
+        "DESCRIPTION": "Machine Learning and Software Engineer at IBSS Corp.",
+        "EMAIL": "amirhassanshariatmadari@gmail.com"
+    },
+
+    "SOCIAL_MEDIA": {
+        "LinkedIn": "https://linkedin.com",
+        "GitHub": "https://github.com", 
+        "Google Scholar": "https://scholar.google.com"
+    }, 
+
+    "MAIN_CONTENT": {
+        "ABOUT_ME": "Versatile software and machine learning engineer with expertise in ML systems, backend infrastructure, and cloud-native applications. Proven experience building large-scale data processing pipelines concurrent programming and data parallelism, deploying production ML services, and training novel machine learning models. Adept at designing modular architectures, managing DevOps workflows, and collaborating cross-functionally in fast-paced, research-driven environments. Passionate about delivering robust, maintainable solutions to complex technical challenges.",
+        "EDUCATION": "assets/education.md",
+        "EXPERIENCE": "assets/experiences.md",
+        "SKILLS": "assets/skills.md",
+        "PUBLICATIONS": "assets/publications.md"
+    }
+
+}
