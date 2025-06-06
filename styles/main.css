@@ -22,12 +22,6 @@ a {
     }
 }
 
-/* a {
-    text-decoration: none;
-    color: black !important;
-    font-weight: 500;
-} */
-
 a:hover {
     color: #d33682 !important;
     text-decoration: none;

@@ -1,4 +1,4 @@
-### Software Engineer - AI/ML [IBSS Corp](https://www.ibsscorp.com/)  
+### Machine Learning and Software Engineer — [IBSS Corp](https://www.ibsscorp.com/)  
 *Silver Spring, Maryland*  
 **06/2025 – Present**
 
@@ -19,7 +19,7 @@
 
 ---
 
-### Graduate Research Assistant [University of Virginia](https://engineering.virginia.edu/department/computer-science)  
+### Graduate Research Assistant — [University of Virginia](https://engineering.virginia.edu/department/computer-science)  
 *Charlottesville, Virginia*  
 **08/2023 – 06/2025**
 
@@ -33,7 +33,7 @@
 
 ---
 
-### Software/ML Engineering Intern [IBSS Corp](https://www.ibsscorp.com/)  
+### Software/ML Engineering Intern — [IBSS Corp](https://www.ibsscorp.com/)  
 *Silver Spring, Maryland*  
 **06/2022 – 08/2023**
 
@@ -47,7 +47,7 @@
 
 ---
 
-### Academic Software Engineering [College of William and Mary](https://wm.edu/)  
+### Academic Software Engineering — [College of William and Mary](https://wm.edu/)  
 *Williamsburg, Virginia*  
 **08/2020 – 05/2023**
 
