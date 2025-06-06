@@ -100,3 +100,4 @@ write_streamlit_section(
     "🛠️ Skills",
     skills
 )
+
