@@ -1,5 +1,5 @@
 import streamlit as st
-from utils import get_paths, load_pdf, load_css, load_image
+from utils import get_paths, load_pdf, load_css, load_image, write_streamlit_section
 
 
 # --- GENERAL SETTINGS ---
@@ -12,7 +12,8 @@ EMAIL = "amirhassanshariatmadari@gmail.com"
 
 SOCIAL_MEDIA = {
     "LinkedIn": "https://linkedin.com",
-    "GitHub": "https://github.com"
+    "GitHub": "https://github.com", 
+    "Google Scholar": "https://scholar.google.com",
     }
 
 PROJECTS = {
@@ -65,3 +66,39 @@ st.write('\n')
 cols = st.columns(len(SOCIAL_MEDIA))
 for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
     cols[index].write(f"[{platform}]({link})")
+
+# --- EDUCATION SECTION ---
+write_streamlit_section(
+    "🎓 Education",
+    """
+    - **Bachelor of Science in Computer Science** at University of Technology (2017 - 2021)
+        - Focused on software engineering and machine learning.
+        - Graduated with honors.
+    - **Master of Science in Artificial Intelligence** at Institute of Advanced Studies (2021 - 2023)
+        - Specialized in deep learning and natural language processing.
+        - Conducted research on AI ethics and bias.
+    """
+)
+
+# --- EXPERIENCE SECTION --- 
+write_streamlit_section(
+    "💼 Experience",
+    """
+    - **Machine Learning Engineer** at IBSS Corp. (2023 - Present)
+        - Developed and deployed machine learning models for various applications.
+        - Collaborated with cross-functional teams to integrate AI solutions.
+    - **Software Engineer** at Tech Solutions (2021 - 2023)
+        - Designed and implemented software solutions for client projects.
+        - Improved system performance and user experience through optimization.
+    """
+)
+
+# Publications section
+write_streamlit_section(
+    "📚 Publications",
+    """
+    - **"Advanced Machine Learning Techniques"** - Published in AI Journal, 2022.
+    - **"Software Development Best Practices"** - Featured in Tech Magazine, 2021.
+    """
+)
+
