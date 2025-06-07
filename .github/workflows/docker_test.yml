@@ -1,11 +1,7 @@
 name: Test Dockerized Streamlit App
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+  [push, pull_request]
 jobs:
   docker-build-and-test:
     runs-on: ubuntu-latest
