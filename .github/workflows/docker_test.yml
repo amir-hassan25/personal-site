@@ -1,0 +1,38 @@
+name: Test Dockerized Streamlit App
+
+on:
+  [push, pull_request]
+jobs:
+  docker-build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to DockerHub (optional if pushing image)
+        if: false  # set to true and configure if pushing image
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker image
+        run: |
+          docker build -t streamlit-app-test .
+
+      - name: Run Docker container in background
+        run: |
+          docker run -d -p 8501:8501 --name test-container streamlit-app-test
+          sleep 10  # give it time to start
+
+      - name: Check if Streamlit is running
+        run: |
+          curl --fail http://localhost:8501 || (docker logs test-container && exit 1)
+
+      - name: Stop and remove container
+        if: always()
+        run: docker rm -f test-container
