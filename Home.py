@@ -63,6 +63,9 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-pg = st.navigation([home, test_page], position="sidebar", expanded=True)
+# Hotfix: Uncomment the next line to enable navigation with multiple pages
+# pg = st.navigation([home, test_page], position="sidebar", expanded=True)
+
+pg = st.navigation([home], position="sidebar", expanded=True)
 
 pg.run()
